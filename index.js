@@ -5,6 +5,8 @@ const Twit = require('twit')
 const screenshotsPath = '/home/pi/.config/retroarch/screenshots/'
 const T = new Twit(config)
 
+let file, mediaIdStr
+
 const statuses = [
   'I am doing an video game',
   '↑↑↓↓←→←→BA',
@@ -30,35 +32,41 @@ const getRandomN = (array, n) => {
   return shuffled.slice(0, n)
 }
 
-const getStatus = (a1, a2) => `
-${a1[Math.floor(Math.random() * a1.length)]}
+const getStatus = (statuses, bots) => `
+${statuses[Math.floor(Math.random() * statuses.length)]}
 
-/cc ${getRandomN(a2, 3).join(' ')}
+/cc ${getRandomN(bots, 3).join(' ')}
 `
 
-const post = (path, file) => {
+const upload = (error, data, response) => {
+  if (error) return console.log(error)
+  mediaIdStr = data.media_id_string
+  const altText = `what me playing: ${file}`
+  const metaParams = { media_id: mediaIdStr, alt_text: { text: altText } }
+
+  T.post('media/metadata/create', metaParams, create)
+}
+
+const create = (error, data, response) => {
+  if (!error) {
+    const status = getStatus(statuses, bots)
+    const params = { status, media_ids: [mediaIdStr] }
+
+    T.post('statuses/update', params, update)
+  } else {
+    console.log(error)
+  }
+}
+
+const update = (error, data, response) => {
+  if (error) return console.log(error)
+  console.log(data)
+}
+
+const post = (path, _file) => {
+  file = _file
   const b64content = fs.readFileSync(`${path}${file}`, { encoding: 'base64' })
-
-  T.post('media/upload', { media_data: b64content }, function (error, data, response) {
-    if (error) return console.log(error)
-    const mediaIdStr = data.media_id_string
-    const altText = `what me playing: ${file}`
-    const metaParams = { media_id: mediaIdStr, alt_text: { text: altText } }
-
-    T.post('media/metadata/create', metaParams, function (error, data, response) {
-      if (!error) {
-        const status = getStatus(statuses, bots)
-        const params = { status, media_ids: [mediaIdStr] }
-
-        T.post('statuses/update', params, function (error, data, response) {
-          if (error) return console.log(error)
-          console.log(data)
-        })
-      } else {
-        console.log(error)
-      }
-    })
-  })
+  T.post('media/upload', { media_data: b64content }, upload)
 }
 
 const onFileChange = (type, file) => {
