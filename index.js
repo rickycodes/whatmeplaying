@@ -33,6 +33,8 @@ const getRandomN = (array, n) => {
 const getStatus = (statuses, bots) => `
 ${statuses[Math.floor(Math.random() * statuses.length)]}
 
+#bot2bot #botALLY
+
 /cc ${getRandomN(bots, 3).join(' ')}
 `
 
