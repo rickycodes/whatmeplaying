@@ -48,14 +48,11 @@ const upload = (file, error, data, response) => {
 }
 
 const create = (mediaIdStr, error, data, response) => {
-  if (!error) {
-    const status = getStatus(statuses, bots)
-    const params = { status, media_ids: [mediaIdStr] }
+  if (error) return console.log(error)
+  const status = getStatus(statuses, bots)
+  const params = { status, media_ids: [mediaIdStr] }
 
-    T.post('statuses/update', params, update)
-  } else {
-    console.log(error)
-  }
+  T.post('statuses/update', params, update)
 }
 
 const update = (error, data, response) => {
