@@ -3,6 +3,7 @@ const debounce = require('lodash.debounce')
 const config = require('./config')
 const Twit = require('twit')
 const screenshotsPath = '/home/pi/.config/retroarch/screenshots/'
+const recordingsPath = '/home/pi/recordings/'
 const T = new Twit(config)
 
 const statuses = [
@@ -15,15 +16,16 @@ const statuses = [
   'FINISH HIM!!'
 ]
 
-const bots = [
+const imageBots = [
   '@pixelsorter',
-  // '@Lowpolybot',
   '@ImgShuffleBOT',
   '@DeepDreamThis',
   '@a_quilt_bot',
   '@IMG2ASCII',
   '@kaleid_o_bot'
 ]
+
+// const gifBots = []
 
 const getRandomN = (array, n) => {
   const shuffled = array.sort(_ => 0.5 - Math.random())
@@ -35,7 +37,7 @@ ${statuses[Math.floor(Math.random() * statuses.length)]}
 
 #bot2bot #botALLY
 
-/cc ${getRandomN(bots, 3).join(' ')}
+/cc ${getRandomN(imageBots, 3).join(' ')}
 `
 
 const upload = (file, error, data, response) => {
@@ -49,7 +51,7 @@ const upload = (file, error, data, response) => {
 
 const create = (mediaIdStr, error, data, response) => {
   if (error) return console.log(error)
-  const status = getStatus(statuses, bots)
+  const status = getStatus(statuses, imageBots)
   const params = { status, media_ids: [mediaIdStr] }
 
   T.post('statuses/update', params, update)
@@ -60,16 +62,21 @@ const update = (error, data, response) => {
   console.log(data)
 }
 
-const post = (path, file) => {
+const postScreenshot = (path, file) => {
   const b64content = fs.readFileSync(`${path}${file}`, { encoding: 'base64' })
   T.post('media/upload', { media_data: b64content }, upload.bind(null, file))
 }
 
-const onFileChange = (type, file) => {
+const screenshotTaken = (type, file) => {
   if (file && type === 'change') {
     console.log('screenshot taken!')
-    post(screenshotsPath, file)
+    postScreenshot(screenshotsPath, file)
   }
 }
 
-fs.watch(screenshotsPath, debounce(onFileChange, 100))
+const videoRecorded = (type, file) => {
+  console.log(type, file)
+}
+
+fs.watch(screenshotsPath, debounce(screenshotTaken, 100))
+fs.watch(recordingsPath, debounce(videoRecorded, 100))
