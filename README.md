@@ -1,1 +1,1 @@
-simple twit bot to post screenshots from my raspberry pi to twitter
+twit bot to post screenshots from raspberry pi to twitter
