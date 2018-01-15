@@ -22,7 +22,8 @@ const imageBots = [
   '@DeepDreamThis',
   '@a_quilt_bot',
   '@IMG2ASCII',
-  '@kaleid_o_bot'
+  '@kaleid_o_bot',
+  '@picwhip'
 ]
 
 // const gifBots = []
