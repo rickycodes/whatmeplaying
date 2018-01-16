@@ -1,57 +1,23 @@
 const fs = require('fs')
 const debounce = require('lodash.debounce')
 const config = require('./config')
+const getFilesize = require('./getFilesize')
+const statuses = require('./statuses')
+const staticBots = require('./staticBots')
+const getStatus = require('./getStatus')
 const Twit = require('twit')
 const screenshotsPath = '/home/pi/.config/retroarch/screenshots/'
 const recordingsPath = '/home/pi/recordings/'
 const T = new Twit(config)
 
+// video related
 let videoFile
 let intervalID
 let recordingStarted = false
 let fileSizeIs = 0
 let fileSizeWas = 0
 
-const getFilesizeInBytes = filename => {
-  const stats = fs.statSync(filename)
-  const fileSizeInBytes = stats.size
-  return fileSizeInBytes
-}
-
-const statuses = [
-  'I am doing an video game',
-  '↑↑↓↓←→←→BA',
-  'beep',
-  'boop',
-  'Hadōken',
-  'PRINCESS IS IN ANOTHER CASTLE!',
-  'FINISH HIM!!'
-]
-
-const staticBots = [
-  '@pixelsorter',
-  '@ImgShuffleBOT',
-  '@DeepDreamThis',
-  '@a_quilt_bot',
-  '@IMG2ASCII',
-  '@kaleid_o_bot',
-  '@picwhip'
-]
-
 // const gifBots = []
-
-const getRandomN = (array, n) => {
-  const shuffled = array.sort(_ => 0.5 - Math.random())
-  return shuffled.slice(0, n)
-}
-
-const getStatus = (statuses, bots) => `
-${statuses[Math.floor(Math.random() * statuses.length)]}
-
-#bot2bot #botALLY
-
-/cc ${getRandomN(staticBots, 3).join(' ')}
-`
 
 const upload = (file, error, data, response) => {
   if (error) return console.log(error)
@@ -88,10 +54,9 @@ const screenshotTaken = (type, file) => {
 }
 
 const videoRecording = (type, file) => {
-  console.log(type, file)
   if (file && type === 'change') {
     videoFile = file
-    fileSizeIs = getFilesizeInBytes(`${recordingsPath}${file}`)
+    fileSizeIs = getFilesize(`${recordingsPath}${file}`)
     if (!recordingStarted) {
       recordingStarted = true
       intervalID = setInterval(isVideoRecording, 4000)
