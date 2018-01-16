@@ -101,15 +101,14 @@ const videoRecording = (type, file) => {
 }
 
 const isVideoRecording = _ => {
-  if (videoFile) {
-    if (fileSizeWas === fileSizeIs) {
-      console.log(`${videoFile} appears to be done recording`)
-      clearInterval(intervalID)
-      // convertToGif()
-    } else {
-      fileSizeWas = fileSizeIs
-      console.log('video is still recording...')
-    }
+  if (fileSizeWas === fileSizeIs) {
+    console.log(`${videoFile} appears to be done recording`)
+    recordingStarted = false
+    clearInterval(intervalID)
+    // convertToGif()
+  } else {
+    fileSizeWas = fileSizeIs
+    console.log('video is still recording...')
   }
 }
 
