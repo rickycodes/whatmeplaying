@@ -6,6 +6,12 @@ const screenshotsPath = '/home/pi/.config/retroarch/screenshots/'
 const recordingsPath = '/home/pi/recordings/'
 const T = new Twit(config)
 
+let videoFile
+let intervalID
+let recordingStarted = false
+let fileSizeIs = 0
+let fileSizeWas = 0
+
 const getFilesizeInBytes = filename => {
   const stats = fs.statSync(filename)
   const fileSizeInBytes = stats.size
@@ -80,12 +86,6 @@ const screenshotTaken = (type, file) => {
     postScreenshot(screenshotsPath, file)
   }
 }
-
-let videoFile
-let recordingStarted = false
-let fileSizeIs = 0
-let fileSizeWas = 0
-let intervalID
 
 const videoRecording = (type, file) => {
   console.log(type, file)
