@@ -24,7 +24,6 @@ const upload = (file, error, data, response) => {
   const mediaIdStr = data.media_id_string
   const altText = `what me playing: ${file}`
   const metaParams = { media_id: mediaIdStr, alt_text: { text: altText } }
-
   T.post('media/metadata/create', metaParams, create.bind(null, mediaIdStr))
 }
 
@@ -32,7 +31,6 @@ const create = (mediaIdStr, error, data, response) => {
   if (error) return console.log(error)
   const status = getStatus(statuses, staticBots)
   const params = { status, media_ids: [mediaIdStr] }
-
   T.post('statuses/update', params, update)
 }
 
