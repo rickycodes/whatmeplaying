@@ -6,6 +6,12 @@ const screenshotsPath = '/home/pi/.config/retroarch/screenshots/'
 const recordingsPath = '/home/pi/recordings/'
 const T = new Twit(config)
 
+const getFilesizeInBytes = filename => {
+  const stats = fs.statSync(filename)
+  const fileSizeInBytes = stats.size
+  return fileSizeInBytes
+}
+
 const statuses = [
   'I am doing an video game',
   '↑↑↓↓←→←→BA',
@@ -16,7 +22,7 @@ const statuses = [
   'FINISH HIM!!'
 ]
 
-const imageBots = [
+const staticBots = [
   '@pixelsorter',
   '@ImgShuffleBOT',
   '@DeepDreamThis',
@@ -38,7 +44,7 @@ ${statuses[Math.floor(Math.random() * statuses.length)]}
 
 #bot2bot #botALLY
 
-/cc ${getRandomN(imageBots, 3).join(' ')}
+/cc ${getRandomN(staticBots, 3).join(' ')}
 `
 
 const upload = (file, error, data, response) => {
@@ -52,7 +58,7 @@ const upload = (file, error, data, response) => {
 
 const create = (mediaIdStr, error, data, response) => {
   if (error) return console.log(error)
-  const status = getStatus(statuses, imageBots)
+  const status = getStatus(statuses, staticBots)
   const params = { status, media_ids: [mediaIdStr] }
 
   T.post('statuses/update', params, update)
@@ -75,9 +81,37 @@ const screenshotTaken = (type, file) => {
   }
 }
 
-const videoRecorded = (type, file) => {
+let videoFile
+let recordingStarted = false
+let fileSizeIs = 0
+let fileSizeWas = 0
+let intervalID
+
+const videoRecording = (type, file) => {
   console.log(type, file)
+  if (file && type === 'change') {
+    videoFile = file
+    fileSizeIs = getFilesizeInBytes(`${recordingsPath}${file}`)
+    if (!recordingStarted) {
+      recordingStarted = true
+      intervalID = setInterval(isVideoRecording, 4000)
+    }
+    console.log('video is recording!')
+  }
+}
+
+const isVideoRecording = _ => {
+  if (videoFile) {
+    if (fileSizeWas === fileSizeIs) {
+      console.log(`${videoFile} appears to be done recording`)
+      clearInterval(intervalID)
+      // convertToGif()
+    } else {
+      fileSizeWas = fileSizeIs
+      console.log('video is still recording...')
+    }
+  }
 }
 
 fs.watch(screenshotsPath, debounce(screenshotTaken, 100))
-fs.watch(recordingsPath, debounce(videoRecorded, 100))
+fs.watch(recordingsPath, videoRecording)
