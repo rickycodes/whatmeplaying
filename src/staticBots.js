@@ -1,4 +1,9 @@
 module.exports = [
+  '@ArtyMash',
+  '@ArtyAbstract',
+  '@ArtyCurve',
+  '@ArtyNegative',
+  '@ArtyWinds',
   '@pixelsorter',
   '@ImgShuffleBOT',
   '@DeepDreamThis',
