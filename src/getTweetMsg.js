@@ -3,7 +3,7 @@ const getRandomN = (array, n) => {
   return shuffled.slice(0, n)
 }
 
-const getStatus = (statuses, bots) => `
+const getTweetMsg = (statuses, bots) => `
 ${statuses[Math.floor(Math.random() * statuses.length)]}
 
 #bot2bot #botALLY
@@ -11,4 +11,4 @@ ${statuses[Math.floor(Math.random() * statuses.length)]}
 /cc ${getRandomN(bots, 3).join(' ')}
 `
 
-module.exports = getStatus
+module.exports = getTweetMsg

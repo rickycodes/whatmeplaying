@@ -4,6 +4,5 @@ module.exports = [
   'beep',
   'boop',
   'Hadōken',
-  'PRINCESS IS IN ANOTHER CASTLE!',
-  'FINISH HIM!!'
+  'PRINCESS IS IN ANOTHER CASTLE!'
 ]
