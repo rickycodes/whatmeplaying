@@ -7,7 +7,7 @@ let fileSizeWas = 0
 const getFilesize = require('./getFilesize')
 const convertVideoToGif = require('./convertToGif')
 
-const screenRecording = (T, gifPath, recordingsPath, type, file) => {
+const onRecording = (T, gifPath, recordingsPath, type, file) => {
   if (file && type === 'change') {
     videoFile = file
     fileSizeIs = getFilesize(`${recordingsPath}${file}`)
@@ -31,4 +31,4 @@ const isScreenRecording = (recordingsPath, gifPath) => {
   }
 }
 
-module.exports = screenRecording
+module.exports = onRecording
