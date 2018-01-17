@@ -4,5 +4,10 @@ module.exports = [
   'beep',
   'boop',
   'Hadōken',
-  'PRINCESS IS IN ANOTHER CASTLE!'
+  'PRINCESS IS IN ANOTHER CASTLE!',
+  'PLAYER1 READY',
+  `
+  ONE PLAYER ONLY
+      OR
+  TWO PLAYERS`
 ]
