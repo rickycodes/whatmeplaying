@@ -1,13 +1,10 @@
 const fs = require('fs')
 const debounce = require('lodash.debounce')
-const config = require('./config')
 const onRecording = require('./src/onRecording')
 const onScreenshot = require('./src/onScreenshot')
+const { twitter, screenshots_path, recording_path, gif_path } = require('./config')
 const Twit = require('twit')
-const screenshotsPath = '/home/pi/.config/retroarch/screenshots/'
-const recordingsPath = '/home/pi/recordings/'
-const gifPath = '/home/pi/gif/'
-const T = new Twit(config)
+const T = new Twit(twitter)
 
-fs.watch(screenshotsPath, debounce(onScreenshot.bind(null, T, screenshotsPath), 100))
-fs.watch(recordingsPath, onRecording.bind(null, T, gifPath, recordingsPath))
+fs.watch(screenshots_path, debounce(onScreenshot.bind(null, T, screenshots_path), 100))
+fs.watch(recording_path, onRecording.bind(null, T, gif_path, recording_path))
