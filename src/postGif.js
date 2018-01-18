@@ -1,5 +1,6 @@
 const statuses = require('./statuses')
 const getTweetMsg = require('./getTweetMsg')
+const update = require('./update')
 const fs = require('fs')
 
 const postGif = (T, path) => {
@@ -16,11 +17,6 @@ const postGif = (T, path) => {
     const status = getTweetMsg(statuses, '@DATAM0SHER')
     const params = { status, media_ids: [mediaIdStr] }
     T.post('statuses/update', params, update)
-  }
-
-  const update = (error, data, response) => {
-    if (error) return console.log(error)
-    console.log(data)
   }
 
   const b64content = fs.readFileSync(`${path}output.gif`, { encoding: 'base64' })

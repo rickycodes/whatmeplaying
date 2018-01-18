@@ -2,6 +2,7 @@ const statuses = require('./statuses')
 const staticBots = require('./staticBots')
 const getTweetMsg = require('./getTweetMsg')
 const getRandomN = require('./getRandomN')
+const update = require('./update')
 const fs = require('fs')
 
 const onScreenshot = (T, screenshotsPath, type, file) => {
@@ -20,19 +21,10 @@ const onScreenshot = (T, screenshotsPath, type, file) => {
     T.post('statuses/update', params, update)
   }
 
-  const update = (error, data, response) => {
-    if (error) return console.log(error)
-    console.log(data)
-  }
-
-  const postScreenshot = (path, file) => {
-    const b64content = fs.readFileSync(`${path}${file}`, { encoding: 'base64' })
-    T.post('media/upload', { media_data: b64content }, upload.bind(null, file))
-  }
-
   if (file && type === 'change') {
     console.log('screenshot taken!')
-    postScreenshot(screenshotsPath, file)
+    const b64content = fs.readFileSync(`${screenshotsPath}${file}`, { encoding: 'base64' })
+    T.post('media/upload', { media_data: b64content }, upload.bind(null, file))
   }
 }
 
