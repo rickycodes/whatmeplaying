@@ -1,5 +1,5 @@
 #!/bin/bash
-scale="320"
+scale="400"
 fps="10"
 file=$1
 path=$2
