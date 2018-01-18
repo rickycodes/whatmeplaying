@@ -8,5 +8,5 @@ module.exports = {
   },
   screenshots_path: '/home/pi/.config/retroarch/screenshots/',
   recording_path: '/home/pi/recordings/',
-  gif_path: '/home/pi/gif/'
+  gif_path: '/home/pi/gifs/'
 }

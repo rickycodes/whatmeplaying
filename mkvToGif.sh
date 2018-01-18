@@ -14,6 +14,6 @@ echo "gif created at ${path}output.gif!"
 
 # cleanup
 rm ${path}*.png
-# rm ${file}
+rm ${file}
 
 echo "all done!"

@@ -5,7 +5,7 @@ let fileSizeIs = 0
 let fileSizeWas = 0
 
 const getFilesize = require('./getFilesize')
-const convertVideoToGif = require('./convertToGif')
+const convertVideoToGif = require('./convertVideoToGif')
 const postGif = require('./postGif')
 
 const onRecording = (T, gifPath, recordingsPath, type, file) => {
