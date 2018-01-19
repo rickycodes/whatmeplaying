@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "standard -v"
+    "lint": "standard -v",
+    "tape": "tape test.js | faucet",
+    "test": "npm run lint && npm run tape"
   },
   "author": "@rickycodes",
   "license": "MIT",
@@ -13,6 +15,8 @@
     "twit": "^2.2.9"
   },
   "devDependencies": {
-    "standard": "^10.0.3"
+    "faucet": "0.0.1",
+    "standard": "^10.0.3",
+    "tape": "^4.8.0"
   }
 }
