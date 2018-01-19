@@ -1,5 +1,6 @@
 const statuses = require('./statuses')
 const getTweetMsg = require('./getTweetMsg')
+const getRandomStatus = require('./getRandomStatus')
 const update = require('./update')
 const fs = require('fs')
 
@@ -14,7 +15,7 @@ const postGif = (T, path) => {
 
   const create = (mediaIdStr, error, data, response) => {
     if (error) return console.log(error)
-    const status = getTweetMsg(statuses, '@DATAM0SHER')
+    const status = getTweetMsg(getRandomStatus(statuses), '@DATAM0SHER')
     const params = { status, media_ids: [mediaIdStr] }
     T.post('statuses/update', params, update)
   }

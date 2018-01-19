@@ -2,6 +2,7 @@ const statuses = require('./statuses')
 const staticBots = require('./staticBots')
 const getTweetMsg = require('./getTweetMsg')
 const getRandomN = require('./getRandomN')
+const getRandomStatus = require('./getRandomStatus')
 const update = require('./update')
 const fs = require('fs')
 
@@ -16,7 +17,7 @@ const onScreenshot = (T, screenshotsPath, type, file) => {
 
   const create = (mediaIdStr, error, data, response) => {
     if (error) return console.log(error)
-    const status = getTweetMsg(statuses, getRandomN(staticBots, 3).join(' '))
+    const status = getTweetMsg(getRandomStatus(statuses), getRandomN(staticBots, 3).join(' '))
     const params = { status, media_ids: [mediaIdStr] }
     T.post('statuses/update', params, update)
   }

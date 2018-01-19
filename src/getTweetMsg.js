@@ -1,5 +1,5 @@
-const getTweetMsg = (statuses, bots) => `
-${statuses[Math.floor(Math.random() * statuses.length)]}
+const getTweetMsg = (status, bots) => `
+${status}
 
 #bot2bot #botALLY
 
