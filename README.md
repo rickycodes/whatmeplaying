@@ -43,7 +43,7 @@ this file also needs to be renamed to `config.js`
 ## Notes
 All this app really does is watch folders for [screenshots & recordings](https://github.com/rickycodes/whatmeplaying/blob/master/index.js#L9), so presumably you could get this to work on most systems? While this was used to create [whatmeplaying](https://twitter.com/whatmeplaying) you could use a similar setup to post screenshots/videos/gifs from games to anywhere (so long as there's an API of some sort).
 
-Most of the actual magic (literally ImageMagick) is in the [mkvToGif.sh](https://github.com/rickycodes/whatmeplaying/blob/master/mkvToGif.sh) file
+Most of the magic (literally ImageMagick) is in the [mkvToGif.sh](https://github.com/rickycodes/whatmeplaying/blob/master/mkvToGif.sh) file
 
 ## License
 MIT License
