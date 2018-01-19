@@ -8,3 +8,5 @@ const T = new Twit(twitter)
 
 fs.watch(screenshots_path, debounce(onScreenshot.bind(null, T, screenshots_path), 100))
 fs.watch(recording_path, onRecording.bind(null, T, gif_path, recording_path))
+
+console.log('application running!')
