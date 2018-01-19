@@ -38,7 +38,7 @@ this file also needs to be renamed to `config.js`
 ## Run the thing
 `node index.js` or `npm start`
 
-(Good luck and ja bless!)
+(Good luck and jah bless!)
 
 ## Notes
 All this app really does is watch folders for [screenshots & recordings](https://github.com/rickycodes/whatmeplaying/blob/master/index.js#L9), so presumably you could get this to work on most systems? While this was used to create [whatmeplaying](https://twitter.com/whatmeplaying) you could use a similar setup to post screenshots/videos/gifs from games to anywhere (so long as there's an API of some sort).
