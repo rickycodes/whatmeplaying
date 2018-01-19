@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard -v"
   },
   "author": "@rickycodes",
   "license": "MIT",
   "dependencies": {
     "lodash.debounce": "^4.0.8",
     "twit": "^2.2.9"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
   }
 }
