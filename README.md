@@ -18,6 +18,7 @@ What you really really need is:
 | npm         | `npm`     | >=5.6.0  |
 | ImageMagick | `convert` | =6.8.9-9 |
 | ffmpeg      | `ffmpeg`  | =3.1.4   |
+
 (I am sure versions can flex a bit)
 
 If you are setting these things up on RetroPie you can follow these guides:
