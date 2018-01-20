@@ -15,8 +15,10 @@ What you really really need is:
 | software    | command   | version  |
 |-------------|-----------|----------|
 | Node.js     | `node`    | >=8.9.4  |
+| npm         | `npm`     | >=5.6.0  |
 | ImageMagick | `convert` | =6.8.9-9 |
 | ffmpeg      | `ffmpeg`  | =3.1.4   |
+(I am sure versions can flex a bit)
 
 If you are setting these things up on RetroPie you can follow these guides:
 
@@ -35,7 +37,13 @@ You'll need to modify values [here](https://github.com/rickycodes/whatmeplaying/
 
 this file also needs to be renamed to `config.js`
 
-## Run the thing
+## Tests
+run unit tests:  
+`npm t`  
+I've also added a test to check your configuration:  
+`NODE_ENV=local node test.js`
+
+## Startup
 `node index.js` or `npm start`
 
 (Good luck and jah bless!)
