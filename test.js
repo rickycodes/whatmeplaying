@@ -1,41 +1,62 @@
 const test = require('tape')
 const fs = require('fs')
 const src = './src/'
+const isFunc = (func) => typeof func === 'function'
 
 // tested
 const getRandomN = require(`${src}getRandomN`)
 const staticBots = require(`${src}staticBots`)
 const getFilesize = require(`${src}getFilesize`)
 const getTweetMsg = require(`${src}getTweetMsg`)
+const getRandomStatus = require(`${src}getRandomStatus`)
+const statuses = require(`${src}statuses`)
 
 // untested
 const convertVideoToGif = require(`${src}convertVideoToGif`) // eslint-disable-line
-const getRandomStatus = require(`${src}getRandomStatus`) // eslint-disable-line
 const onRecording = require(`${src}onRecording`) // eslint-disable-line
 const onScreenshot = require(`${src}onScreenshot`) // eslint-disable-line
 const postGif = require(`${src}postGif`) // eslint-disable-line
-const statuses = require(`${src}statuses`) // eslint-disable-line
-const update = require(`${src}update`) // eslint-disable-line
 
 test('getRandomN', t => {
-  t.plan(2)
+  t.plan(3)
   const getThreeBots = getRandomN(staticBots, 3)
+  t.true(isFunc(getRandomN))
   t.true(getThreeBots.length === 3)
   t.true(staticBots.length > getThreeBots.length)
 })
 
 test('getFilesize', t => {
-  t.plan(1)
+  t.plan(2)
+  t.true(isFunc(getFilesize))
   t.true(getFilesize('./src/getFilesize.js') === 192)
 })
 
 test('getTweetMsg', t => {
-  t.plan(1)
+  t.plan(2)
+  t.true(isFunc(getTweetMsg))
   t.true(getTweetMsg('beep beeb boop', ['e', 'f', 'g']), `beep beeb boop
 
 #bot2bot #botALLY
 
 /cc e,f,g`)
+})
+
+test('getRandomStatus', t => {
+  t.plan(2)
+  t.true(isFunc(getRandomStatus))
+  t.true(statuses.includes(getRandomStatus(statuses)))
+})
+
+test('statuses', t => {
+  t.plan(2)
+  t.true(Array.isArray(statuses))
+  t.true(statuses.length)
+})
+
+test('staticBots', t => {
+  t.plan(2)
+  t.true(Array.isArray(staticBots))
+  t.true(staticBots.length)
 })
 
 // test config
