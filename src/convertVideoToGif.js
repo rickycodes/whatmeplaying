@@ -11,7 +11,10 @@ const convertVideoToGif = (sh, file, path, cb) => {
   const command = spawn('bash', args)
   command.stdout.on('data', logData)
   command.stderr.on('data', logData)
-  command.on('exit', code => code === 0 && cb())
+  command.on('exit', code => {
+    if (code === 0) return cb()
+    return cb(new Error('fail'))
+  })
 }
 
 module.exports = convertVideoToGif

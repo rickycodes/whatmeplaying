@@ -9,9 +9,9 @@ const getFilesize = require('./src/getFilesize')
 const getTweetMsg = require('./src/getTweetMsg')
 const getRandomStatus = require('./src/getRandomStatus')
 const statuses = require('./src/statuses')
+const convertVideoToGif = require('./src/convertVideoToGif')
 
 // untested
-const convertVideoToGif = require('./src/convertVideoToGif') // eslint-disable-line
 const onRecording = require('./src/onRecording') // eslint-disable-line
 const onScreenshot = require('./src/onScreenshot') // eslint-disable-line
 const postGif = require('./src/postGif') // eslint-disable-line
@@ -56,6 +56,14 @@ test('staticBots', t => {
   t.plan(2)
   t.true(Array.isArray(staticBots))
   t.true(staticBots.length)
+})
+
+test('convertVideoToGif', t => {
+  t.plan(2)
+  convertVideoToGif('fakeshell.sh', null, null, (error) => {
+    t.true(error)
+    t.true(error.message === 'fail')
+  })
 })
 
 // ¯\_(ツ)_/¯
