@@ -59,6 +59,12 @@ test('staticBots', t => {
   t.true(staticBots.length)
 })
 
+// ¯\_(ツ)_/¯
+test('isFunc', t => {
+  t.plan(1)
+  t.true(isFunc(function () {}), true)
+})
+
 // test config
 if (process.env.NODE_ENV === 'local') {
   const { paths } = require('./config')
