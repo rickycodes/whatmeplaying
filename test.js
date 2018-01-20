@@ -1,9 +1,21 @@
 const test = require('tape')
 const fs = require('fs')
-const getRandomN = require('./src/getRandomN')
-const staticBots = require('./src/staticBots')
-const getFilesize = require('./src/getFilesize')
-const getTweetMsg = require('./src/getTweetMsg')
+const src = './src/'
+
+// tested
+const getRandomN = require(`${src}getRandomN`)
+const staticBots = require(`${src}staticBots`)
+const getFilesize = require(`${src}getFilesize`)
+const getTweetMsg = require(`${src}getTweetMsg`)
+
+// untested
+const convertVideoToGif = require(`${src}convertVideoToGif`) // eslint-disable-line
+const getRandomStatus = require(`${src}getRandomStatus`) // eslint-disable-line
+const onRecording = require(`${src}onRecording`) // eslint-disable-line
+const onScreenshot = require(`${src}onScreenshot`) // eslint-disable-line
+const postGif = require(`${src}postGif`) // eslint-disable-line
+const statuses = require(`${src}statuses`) // eslint-disable-line
+const update = require(`${src}update`) // eslint-disable-line
 
 test('getRandomN', t => {
   t.plan(2)
