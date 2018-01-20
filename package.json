@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines" : {
-    "node" : ">=8.9.4"
+  "engines": {
+    "node": ">=8.9.4"
   },
-  "os" : [
+  "os": [
     "linux"
   ],
   "scripts": {
     "start": "node index.js",
     "lint": "standard -v",
     "tape": "tape test.js",
-    "test": "npm run lint && npm run tape"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape test.js"
   },
   "author": "@rickycodes",
   "license": "MIT",
@@ -22,6 +22,7 @@
     "twit": "^2.2.9"
   },
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "standard": "^10.0.3",
     "tape": "^4.8.0"
   }
