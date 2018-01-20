@@ -1,6 +1,6 @@
 const test = require('tape')
 const fs = require('fs')
-const isFunc = (func) => typeof func === 'function'
+const isFunc = func => typeof func === 'function'
 
 // tested
 const getRandomN = require('./src/getRandomN')
