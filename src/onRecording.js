@@ -24,7 +24,6 @@ const isScreenRecording = (T, recordingsPath, gifPath) => {
   if (videoFile && fileSizeWas === fileSizeIs) {
     console.log(`${videoFile} appears to be done recording`)
     recordingStarted = false
-    videoFile = null
     clearInterval(intervalID)
     convertVideoToGif(`${recordingsPath}${videoFile}`, gifPath, postGif.bind(null, T, gifPath))
   } else {
