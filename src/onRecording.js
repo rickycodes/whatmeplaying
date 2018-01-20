@@ -25,7 +25,7 @@ const isScreenRecording = (T, recordingsPath, gifPath) => {
     console.log(`${videoFile} appears to be done recording`)
     recordingStarted = false
     clearInterval(intervalID)
-    convertVideoToGif(`${recordingsPath}${videoFile}`, gifPath, postGif.bind(null, T, gifPath))
+    convertVideoToGif('mkvToGif.sh', `${recordingsPath}${videoFile}`, gifPath, postGif.bind(null, T, gifPath))
   } else {
     fileSizeWas = fileSizeIs
     console.log('video is still recording...')

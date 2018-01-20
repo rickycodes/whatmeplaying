@@ -1,9 +1,9 @@
 const { spawn } = require('child_process')
 const logData = data => console.log(data.toString())
 
-const convertVideoToGif = (file, path, cb) => {
+const convertVideoToGif = (sh, file, path, cb) => {
   const args = [
-    'mkvToGif.sh',
+    sh,
     file,
     path
   ]
