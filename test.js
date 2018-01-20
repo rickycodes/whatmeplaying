@@ -4,8 +4,6 @@ const getRandomN = require('./src/getRandomN')
 const staticBots = require('./src/staticBots')
 const getFilesize = require('./src/getFilesize')
 const getTweetMsg = require('./src/getTweetMsg')
-const { paths } = require('./config')
-const pathKeys = Object.keys(paths)
 
 test('getRandomN', t => {
   t.plan(2)
@@ -30,6 +28,8 @@ test('getTweetMsg', t => {
 
 // test config
 if (process.env.NODE_ENV === 'local') {
+  const { paths } = require('./config')
+  const pathKeys = Object.keys(paths)
   test('paths', t => {
     t.plan(pathKeys.length)
     pathKeys.map(path => t.true(fs.existsSync(paths[path])))
