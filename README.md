@@ -18,7 +18,7 @@ What you really really need is:
 | ImageMagick | `convert` | =6.8.9-9 |
 | ffmpeg      | `ffmpeg`  | =3.1.4   |
 
-If you are setting these things up on RetroPie there's good resources:
+If you are setting these things up on RetroPie you can follow these guides:
 
 - [Recording Live Gameplay in RetroPie’s RetroArch Emulators Natively on the Raspberry Pi](https://retroresolution.com/2016/07/06/recording-live-gameplay-in-retropies-retroarch-emulators-natively-on-the-raspberry-pi/#li_before_proceeding)
 - [Recording gameplay videos on RetroPie](https://www.artificialworlds.net/blog/2018/01/07/recording-gameplay-videos-on-retropie/) ([with some handy shell scripts!](https://github.com/andybalaam/retropie-recording))
