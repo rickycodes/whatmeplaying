@@ -15,6 +15,7 @@ const convertVideoToGif = require('./src/convertVideoToGif')
 const onRecording = require('./src/onRecording') // eslint-disable-line
 const onScreenshot = require('./src/onScreenshot') // eslint-disable-line
 const postGif = require('./src/postGif') // eslint-disable-line
+const update = require('./src/update') // eslint-disable-line
 
 test('getRandomN', t => {
   t.plan(3)
@@ -68,8 +69,10 @@ test('convertVideoToGif', t => {
 
 // ¯\_(ツ)_/¯
 test('isFunc', t => {
-  t.plan(1)
-  t.true(isFunc(function () {}), true)
+  t.plan(3)
+  t.false(isFunc(null))
+  t.true(isFunc(isFunc)) // ;)
+  t.true(isFunc(function () {}))
 })
 
 // test config
