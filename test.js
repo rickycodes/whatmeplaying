@@ -1,21 +1,20 @@
 const test = require('tape')
 const fs = require('fs')
-const src = './src/'
 const isFunc = (func) => typeof func === 'function'
 
 // tested
-const getRandomN = require(`${src}getRandomN`)
-const staticBots = require(`${src}staticBots`)
-const getFilesize = require(`${src}getFilesize`)
-const getTweetMsg = require(`${src}getTweetMsg`)
-const getRandomStatus = require(`${src}getRandomStatus`)
-const statuses = require(`${src}statuses`)
+const getRandomN = require('./src/getRandomN')
+const staticBots = require('./src/staticBots')
+const getFilesize = require('./src/getFilesize')
+const getTweetMsg = require('./src/getTweetMsg')
+const getRandomStatus = require('./src/getRandomStatus')
+const statuses = require('./src/statuses')
 
 // untested
-const convertVideoToGif = require(`${src}convertVideoToGif`) // eslint-disable-line
-const onRecording = require(`${src}onRecording`) // eslint-disable-line
-const onScreenshot = require(`${src}onScreenshot`) // eslint-disable-line
-const postGif = require(`${src}postGif`) // eslint-disable-line
+const convertVideoToGif = require('./src/convertVideoToGif') // eslint-disable-line
+const onRecording = require('./src/onRecording') // eslint-disable-line
+const onScreenshot = require('./src/onScreenshot') // eslint-disable-line
+const postGif = require('./src/postGif') // eslint-disable-line
 
 test('getRandomN', t => {
   t.plan(3)
