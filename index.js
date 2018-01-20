@@ -2,7 +2,7 @@ const fs = require('fs')
 const debounce = require('lodash.debounce')
 const onRecording = require('./src/onRecording')
 const onScreenshot = require('./src/onScreenshot')
-const { twitter, screenshots_path, recording_path, gif_path } = require('./config')
+const { twitter, paths: { screenshots_path, recording_path, gif_path } } = require('./config')
 const Twit = require('twit')
 const T = new Twit(twitter)
 
