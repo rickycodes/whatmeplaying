@@ -1,6 +1,6 @@
 ## Whatmeplaying [![Build Status](https://travis-ci.org/rickycodes/whatmeplaying.svg?branch=master)](https://travis-ci.org/rickycodes/whatmeplaying) [![codecov](https://codecov.io/gh/rickycodes/whatmeplaying/branch/master/graph/badge.svg)](https://codecov.io/gh/rickycodes/whatmeplaying/) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-twit app to post screenshots from raspberry pi (RetroPie) to twitter: https://twitter.com/whatmeplaying
+🎮 twit app to post screenshots or recrord video games from my raspberry pi (RetroPie) to twitter: https://twitter.com/whatmeplaying
 
 <p align="center">
   <br />
